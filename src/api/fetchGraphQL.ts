@@ -1,12 +1,8 @@
 // your-app-name/src/fetchGraphQL.js
 async function fetchGraphQL(text: string, variables?: any) {
-  const VITE_GITHUB_AUTH_TOKEN = import.meta.env.VITE_GITHUB_AUTH_TOKEN;
-
-  // Fetch data from GitHub's GraphQL API:
-  const response = await fetch("https://api.github.com/graphql", {
+  const response = await fetch(import.meta.env.VITE_API_URL, {
     method: "POST",
     headers: {
-      Authorization: `bearer ${VITE_GITHUB_AUTH_TOKEN}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({

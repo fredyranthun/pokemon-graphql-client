@@ -1,39 +1,35 @@
 import React from "react";
-import { graphql } from "react-relay";
 import {
   RelayEnvironmentProvider,
   loadQuery,
   usePreloadedQuery,
 } from "react-relay/hooks";
 import RelayEnvironment from "./RelayEnvironment";
+import { Button, MantineProvider, Text } from "@mantine/core";
+import CardsCarousel from "./components/Carousel";
+import { PokemonsQuery } from "./queries/Pokemons";
+import { PokemonsQuery$data } from "./queries/__generated__/PokemonsQuery.graphql";
 
 const { Suspense } = React;
 
-// Define a query
-const RepositoryNameQuery = graphql`
-  query AppRepositoryNameQuery {
-    repository(owner: "facebook", name: "relay") {
-      name
-    }
-  }
-`;
-
-const preloadedQuery = loadQuery(RelayEnvironment, RepositoryNameQuery, {
+const preloadedQuery = loadQuery(RelayEnvironment, PokemonsQuery, {
   /* query variables */
+  page: 1,
+  take: 25,
 });
 
 function App(props: any) {
   const data = usePreloadedQuery(
-    RepositoryNameQuery,
+    PokemonsQuery,
     props.preloadedQuery
-  ) as any;
+  ) as PokemonsQuery$data;
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>{data?.repository.name}</p>
-      </header>
-    </div>
+    <MantineProvider withGlobalStyles withNormalizeCSS>
+      <Text>Welcome to Pokemon App!</Text>
+      {data?.pokemons && <CardsCarousel pokemons={data.pokemons} />}
+      <Button onClick={() => {}}>Load more Pokemons</Button>
+    </MantineProvider>
   );
 }
 
