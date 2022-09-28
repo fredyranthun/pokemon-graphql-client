@@ -6,6 +6,10 @@ export const PokemonsQuery = graphql`
       id
       name
       hp
+      attack
+      defense
+      spAttack
+      spDefense
     }
   }
 `;

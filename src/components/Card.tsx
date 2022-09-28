@@ -36,7 +36,15 @@ const useStyles = createStyles((theme) => ({
 
 export type CardProps = PokemonsQuery$data["pokemons"][number];
 
-export default function Card({ id, name, hp }: CardProps) {
+export default function Card({
+  id,
+  name,
+  hp,
+  attack,
+  defense,
+  spAttack,
+  spDefense,
+}: CardProps) {
   const { classes } = useStyles();
 
   return (
@@ -51,12 +59,18 @@ export default function Card({ id, name, hp }: CardProps) {
       className={classes.card}
     >
       <div>
-        <Text className={classes.category} size="xs">
-          {hp}
-        </Text>
         <Title order={3} className={classes.title}>
           {name}
         </Title>
+        <Text className={classes.category} size="xs">
+          Hp: {hp}
+        </Text>
+        <Text className={classes.category} size="xs">
+          Attack: {attack}
+        </Text>
+        <Text className={classes.category} size="xs">
+          Defense: {defense}
+        </Text>
       </div>
       <Button variant="white" color="dark">
         Editar

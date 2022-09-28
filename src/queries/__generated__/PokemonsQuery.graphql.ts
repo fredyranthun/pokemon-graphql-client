@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3c27666a9e22c5cda7d48f00b729db7d>>
+ * @generated SignedSource<<70a4995734b8339bc156ba73326dc8d3>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,9 +15,13 @@ export type PokemonsQuery$variables = {
 };
 export type PokemonsQuery$data = {
   readonly pokemons: ReadonlyArray<{
+    readonly attack: number;
+    readonly defense: number;
     readonly hp: number;
     readonly id: string;
     readonly name: string;
+    readonly spAttack: number;
+    readonly spDefense: number;
   }>;
 };
 export type PokemonsQuery = {
@@ -78,6 +82,34 @@ v1 = [
         "kind": "ScalarField",
         "name": "hp",
         "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "attack",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "defense",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "spAttack",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "spDefense",
+        "storageKey": null
       }
     ],
     "storageKey": null
@@ -101,16 +133,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "96a066723dc3ad085842c605ee97a46b",
+    "cacheID": "2bf003278ffa216ded442f2eaa4d4c4b",
     "id": null,
     "metadata": {},
     "name": "PokemonsQuery",
     "operationKind": "query",
-    "text": "query PokemonsQuery(\n  $page: Int!\n  $take: Int!\n) {\n  pokemons(page: $page, take: $take) {\n    id\n    name\n    hp\n  }\n}\n"
+    "text": "query PokemonsQuery(\n  $page: Int!\n  $take: Int!\n) {\n  pokemons(page: $page, take: $take) {\n    id\n    name\n    hp\n    attack\n    defense\n    spAttack\n    spDefense\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "5c47e691966693dc861f80af9c884115";
+(node as any).hash = "db038fa759b7ba41c77a18c3b73b06b4";
 
 export default node;
